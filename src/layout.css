@@ -1,0 +1,32 @@
+#wrapper, #box_container, #box1, #box2, .name{border: solid 2px black;}
+
+#wrapper {width: 1250px; height: 800px; margin: 5% auto; padding: 20px 40px; }
+
+#box_container{width: auto; margin: 0 auto; position: relative; top: 104px;}
+#wrapper {width: 1250px; height: 760px; margin: 50px auto; padding: 20px 40px; background-color: #ffefa0;}
+
+#box_container{width: auto; margin: 0 auto; position: relative; top: 104px; background-color: #FFF;}
+#box_container:after{content: ''; display: block; clear: both;}
+
+#box1_area, #box2_area{
+    width: 564px;
+    height: 630px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /*box1, name 세로 정렬*/
+}
+
+#box1, #box2{width: 500px; height: 430px; margin: 15% 30px 5% 30px;}
+#box1, #box2{width: 500px; height: 430px; margin: 15% 30px 3% 30px;}
+
+#box1, #box1_area{float: left;}
+#box2, #box2_area{float: right;}
+
+.name {width: 500px; height: 50px; margin: 10px auto;}
+
+img{width: 100%; height: 100%; object-fit: cover;}
+
+#box1 img.click{background-color: lightpink;}
+#box2 img.click{background-color: lightsalmon;}
