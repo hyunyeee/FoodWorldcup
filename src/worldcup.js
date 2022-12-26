@@ -23,7 +23,7 @@ $(document).ready(function(){
         array.sort(() => Math.random() - 0.5);
     }
 
-    function gamesArray(array) {
+    function gamesArray(array) { //요소 2개씩 slice하고 클릭 이벤트 발생시마다 다음 게임
         let games = [];
 
         for (let i=0; i<array.length; i+=2){
@@ -31,16 +31,33 @@ $(document).ready(function(){
         }
 
         console.log(games);
-
+        // 배열 요소 2개씩 슬라이스
 
         let count = 0
-        $("#food1, #food2").click(function() {
+        $("#food1").attr("src", games[count][0]);
+        $("#food2").attr("src", games[count][1]);
 
+
+        $("#food1, #food2").click(function() { //클릭 이벤트 발생시마다 다음 게임
             count++;
-
             $("#food1").attr("src", games[count][0]);
             $("#food2").attr("src", games[count][1]);
+        });
 
+        //클릭 이벤트 발생하면 해당 요소 selectedArr에 저장
+
+        let selectedArr = [];
+
+
+        $("#food1").click(function (){
+            selectedArr.push(games[count-1][0]);
+            console.log(selectedArr);
+            console.log(count);
+        });
+
+        $("#food2").click(function (){
+            selectedArr.push(games[count-1][1]);
+            console.log(selectedArr);
         });
     }
 
@@ -48,6 +65,8 @@ $(document).ready(function(){
         shuffle(foodArr); //배열 섞기
 
         gamesArray(foodArr); //배열 2개씩 slice, 이차원 배열로 저장
+
+        //gamesArray(selectedArr)
 
     })
 
