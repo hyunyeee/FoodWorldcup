@@ -23,16 +23,14 @@ $(document).ready(function(){
         array.sort(() => Math.random() - 0.5);
     }
 
+    function games(array) { //요소 2개씩 slice하고 클릭 이벤트 발생시마다 다음 게임
+        // 1) array를 요소 2개 slice해서 새 배열 games에 이차원 배열로 담고
+        // 2) count = 0 초기화, 클릭 전 초기 값 [0][0] [0][1]로 세팅
+        // 3) 클릭 이벤트 발생할 때마다 count ++, 다음 경기 보여주고,
+        // 4) 클릭 발생한 요소는 selectedArr에 추가
 
-    let games = []; //2개씩 slice해서 담을 배열
-    let selectedArr = []; //클릭 이벤트 발생하면 해당 요소 selectedArr에 저장
-
-
-    function gamesArray(array) { //요소 2개씩 slice하고 클릭 이벤트 발생시마다 다음 게임
-            // 1) array를 요소 2개식 slice해서 새 배열 games에 이차원 배열로 담고
-            // 2) count = 0 초기화, 클릭 전 초기 값 [0][0] [0][1]로 세팅
-            // 3) 클릭 이벤트 발생할 때마다 count ++, 다음 경기 보여주고,
-            // 4) 클릭 발생한 요소는 selectedArr에 추가
+        let games = []; //2개씩 slice해서 담을 배열
+        let selectedArr = []; //클릭 이벤트 발생하면 해당 요소 selectedArr에 저장
 
         // 배열 요소 2개씩 슬라이스
         for (let i=0; i<array.length; i+=2) {
@@ -59,7 +57,6 @@ $(document).ready(function(){
             }
         });
 
-
         $("#food1").click(function (){ //클릭한 요소 selectedArr에 추가
             if(count < array.length/2+1){ //0번 요소를 담으려면 클릭(count)이 1이어야 함
                                           //따라서 얘는 카운트 8까지 받아야되고 배열 요소는 7
@@ -70,20 +67,32 @@ $(document).ready(function(){
         });
 
         $("#food2").click(function (){ //클릭한 요소 selectedArr에 추가
-            if(count < array.length/2) {
+            if(count < array.length/2+1) {
                 selectedArr.push(games[count-1][1]);
                 console.log(selectedArr);
                 console.log(count);
             }
         });
+
+        // let result = [];
+        // result = selectedArr;
+        return selectedArr; //선택된 배열 return
     }
 
-
-
-    $("button").click(function (){ //시작 버튼 누르면 배열 섞음
+    let result_16R = [];
+    let result_8R = [];
+    $("#start").click(function () { //시작 버튼 누르면 배열 섞음
         shuffle(foodArr); //배열 섞기
+        result_16R = games(foodArr); //16강 결과
+    });
 
-        gamesArray(foodArr); //배열 2개씩 slice, 이차원 배열로 저장
-    })
+    $("#Round_8").click(function () { //시작 버튼 누르면 배열 섞음
+        shuffle(result_16R); //배열 섞기
+        result_8R = games(result_16R); //16강 결과
+        console.log(result_8R);
+    });
 
+
+
+    // 만약 selectedArr 의 길이 == 매개변수 array의 길이가 되면 다음 라운드 진행
 });
