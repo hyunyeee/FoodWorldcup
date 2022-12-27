@@ -1,10 +1,24 @@
+
+
+
+
+
+
+
+
+
+/*#Round_8, #Round_4, #Round_2{display: none;}*/
+
 #wrapper, #box_container, #box1, #box2, .name{border: solid 2px black;}
 
 #wrapper {width: 1250px; height: 760px; margin: 50px auto; padding: 20px 40px; background-color: #ffefa0;}
 
 #screen{width: 100%; height: 100%; background-color: black; opacity: 30%; position: absolute; top: 0; visibility: hidden;}
 
-#buttons {text-align: center; position: relative;}
+#buttonsArea{display: flex; justify-content: center; align-items: center;}
+
+button{text-align: center; position: relative; margin: 10px auto;}
+
 
 .nextRoundButton {visibility: hidden;}
 
@@ -57,3 +71,4 @@
 .namebox1, .namebox2 {width: 500px; height: 50px; margin: 10px auto; border: solid 1px black;}
 
 img{width: 100%; height: 100%; object-fit: cover;}
+
