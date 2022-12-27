@@ -17,12 +17,15 @@
 
 
 button{font-size: 30px; background-color: #FFF; border-radius: 15px; color: #ffdf43; border: solid 3px #ffdf43; position: relative;}
-button:hover{font-size: 30px; background-color: #ffefa0; border-radius: 15px; color: #484848; border: solid 3px #484848;}
+button:hover{font-size: 30px; background-color: #ffefa0; border-radius: 15px; color: #484848; border: solid 3px #484848; transition-duration: 0.5s;}
 
 .nextRoundButton {display: none;}
 /*#Round_8, #Round_4, #Round_2{display: none;}*/
 
-#food1:hover, #food2:hover{transform: scale(1.05);}
+#food1:hover, #food2:hover{
+    transform: scale(1.05);
+    filter: grayscale(0) drop-shadow(0px 9px 14px #000);
+}
 
 .win{
     pointer-events: none;
@@ -30,7 +33,7 @@ button:hover{font-size: 30px; background-color: #ffefa0; border-radius: 15px; co
 }
 
 .winner {
-    transform: scale(1.1) rotate(720deg);
+    transform: scale(1.2) rotate(720deg);
     transition: all ease 1s;
     filter: grayscale(0) drop-shadow(-1px 32px 34px #000);
     /*transform: rotate(1080deg); transition-duration: 1s;*/
