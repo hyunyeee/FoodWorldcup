@@ -1,11 +1,41 @@
 #wrapper, #box_container, #box1, #box2, .name{border: solid 2px black;}
 
-#wrapper {width: 1250px; height: 800px; margin: 5% auto; padding: 20px 40px; }
-
-#box_container{width: auto; margin: 0 auto; position: relative; top: 104px;}
 #wrapper {width: 1250px; height: 760px; margin: 50px auto; padding: 20px 40px; background-color: #ffefa0;}
 
-#box_container{width: auto; margin: 0 auto; position: relative; top: 104px; background-color: #FFF;}
+#screen{width: 100%; height: 100%; background-color: black; opacity: 30%; position: absolute; top: 0; visibility: hidden;}
+
+#buttons {text-align: center; position: relative;}
+
+#Round_8, #Round_4, #Round_2 {visibility: hidden;}
+
+#food1:hover, #food2:hover{transform: scale(1.05);}
+
+/*#food1.on{animation: ease 0.5s;}*/
+/*#food2.on{}*/
+
+.win{
+    pointer-events: none;
+    filter: grayscale(80%);
+
+}
+
+.winner {
+    transform: scale(1.1) rotate(720deg);
+    transition: all ease 1s;
+    filter: grayscale(0) drop-shadow(-1px 32px 34px #000);
+    /*transform: rotate(1080deg); transition-duration: 1s;*/
+}
+
+/*alertLastImage 클래스 추가*/
+#screen.alertLastImage{visibility: visible;}
+
+#food1.alertLastImage, #food2.alertLastImage{filter: grayscale(80%);}
+
+#food1:hover.alertLastImage, #food2:hover.alertLastImage{transform: scale(1);}
+
+#Round_8.alertLastImage, #Round_4.alertLastImage, #Round_2.alertLastImage {visibility: visible;}
+
+#box_container{width: auto; margin: 0 auto; top: 104px; background-color: #FFF;}
 #box_container:after{content: ''; display: block; clear: both;}
 
 #box1_area, #box2_area{
@@ -18,31 +48,11 @@
     /*box1, name 세로 정렬*/
 }
 
-#box1, #box2{width: 500px; height: 430px; margin: 15% 30px 5% 30px;}
 #box1, #box2{width: 500px; height: 430px; margin: 15% 30px 3% 30px;}
 
 #box1, #box1_area{float: left;}
 #box2, #box2_area{float: right;}
 
-.name {width: 500px; height: 50px; margin: 10px auto;}
+.namebox1, .namebox2 {width: 500px; height: 50px; margin: 10px auto; border: solid 1px black;}
 
 img{width: 100%; height: 100%; object-fit: cover;}
-
-#box1 img.click{background-color: lightpink;}
-#box2 img.click{background-color: lightsalmon;}
-
-/*.selected{filter: grayscale(100%);}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
