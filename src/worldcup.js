@@ -65,7 +65,6 @@ $(document).ready(function(){
         $("#food1").attr("src", games[count][0]);
         $("#food2").attr("src", games[count][1]);
 
-
         $("#food1, #food2").click(function() { //클릭 이벤트 발생시마다 다음 게임 노출
 
             count++;
@@ -83,26 +82,29 @@ $(document).ready(function(){
 
                 $("#food1, #food2, #screen, #food1:hover, #food2:hover /*, .nextRoundButton*/").addClass("alertLastImage");
 
-                if (round===1){
-                    $(".nextRoundButton").removeClass("alertLastImage");
-                    $("#Round_8").addClass("alertLastImage");
-                }
 
-                if (round===2){
-                    $(".nextRoundButton").removeClass("alertLastImage");
-                    $("#Round_4").addClass("alertLastImage");
-                }
+                switch (round){
+                    case 1:
+                        $(".nextRoundButton").removeClass("alertLastImage");
+                        $("#Round_8").addClass("alertLastImage");
+                        break;
 
-                if (round===3){
-                    $(".nextRoundButton").removeClass("alertLastImage");
-                    $("#Round_2").addClass("alertLastImage");
-                }
+                    case 2:
+                        $(".nextRoundButton").removeClass("alertLastImage");
+                        $("#Round_4").addClass("alertLastImage");
+                        break;
 
-                if (round===4) { //winner
-                    $("#food1, #food2, .nextRoundButton").removeClass("alertLastImage")
-                    $("#food1, #food2").addClass("win");
+                    case 3:
+                        $(".nextRoundButton").removeClass("alertLastImage");
+                        $("#Round_2").addClass("alertLastImage");
+                        break;
 
-                    $(this).addClass("winner");
+                    case 4:
+                        $("#food1, #food2, .nextRoundButton").removeClass("alertLastImage")
+                        $("#food1, #food2").addClass("win");
+
+                        $(this).addClass("winner");
+                        break;
                 }
             }
         });
@@ -155,4 +157,3 @@ $(document).ready(function(){
         console.log(result_2R);
     });
 });
-
