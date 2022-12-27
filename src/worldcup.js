@@ -74,13 +74,13 @@ $(document).ready(function(){
             }
         });
 
-        // let result = [];
-        // result = selectedArr;
         return selectedArr; //선택된 배열 return
     }
 
     let result_16R = [];
     let result_8R = [];
+    let result_4R = [];
+    let result_2R = [];
     $("#start").click(function () { //시작 버튼 누르면 배열 섞음
         shuffle(foodArr); //배열 섞기
         result_16R = games(foodArr); //16강 결과
@@ -92,7 +92,17 @@ $(document).ready(function(){
         console.log(result_8R);
     });
 
+    $("#Round_4").click(function () { //시작 버튼 누르면 배열 섞음
+        shuffle(result_8R); //배열 섞기
+        result_4R = games(result_8R); //16강 결과
+        console.log(result_4R);
+    });
 
+    $("#Round_2").click(function () { //시작 버튼 누르면 배열 섞음
+        shuffle(result_4R); //배열 섞기
+        result_2R = games(result_4R); //16강 결과
+        console.log(result_2R);
+    });
 
     // 만약 selectedArr 의 길이 == 매개변수 array의 길이가 되면 다음 라운드 진행
 });
