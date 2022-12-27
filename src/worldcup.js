@@ -47,7 +47,7 @@ $(document).ready(function(){
         // 2) count = 0 초기화, 클릭 전 초기 값 [0][0] [0][1]로 세팅
         // 3) 클릭 이벤트 발생할 때마다 count ++, 다음 경기 보여주고,
         // 4) 클릭 발생한 요소는 selectedArr에 추가
-        $("#food1, #food2, #screen, #food1:hover, #food2:hover, #Round_8, #Round_4, #Round_2").removeClass("alertLastImage");
+        $("#food1, #food2, #screen, #food1:hover, #food2:hover, .nextRoundButton").removeClass("alertLastImage");
         round ++;
 
         let games = []; //2개씩 slice해서 담을 배열
@@ -70,7 +70,7 @@ $(document).ready(function(){
 
             count++;
             if(count < array.length/2){ //count가 0~7까지 들어와야됨
-                $("#food1, #food2, #screen, #food1:hover, #food2:hover, #Round_8, #Round_4, #Round_2").removeClass("alertLastImage");
+                $("#food1, #food2, #screen, #food1:hover, #food2:hover, .nextRoundButton").removeClass("alertLastImage");
 
                 $("#food1").attr("src", games[count][0]).addClass("click");
                 $("#food2").attr("src", games[count][1]).addClass("click");
@@ -81,19 +81,30 @@ $(document).ready(function(){
                 $("#food1").attr("src", games[games.length-1][0])
                 $("#food2").attr("src", games[games.length-1][1])
 
-                $("#food1, #food2, #screen, #food1:hover, #food2:hover, #Round_8, #Round_4, #Round_2").addClass("alertLastImage");
+                $("#food1, #food2, #screen, #food1:hover, #food2:hover /*, .nextRoundButton*/").addClass("alertLastImage");
 
+                if (round===1){
+                    $(".nextRoundButton").removeClass("alertLastImage");
+                    $("#Round_8").addClass("alertLastImage");
+                }
+
+                if (round===2){
+                    $(".nextRoundButton").removeClass("alertLastImage");
+                    $("#Round_4").addClass("alertLastImage");
+                }
+
+                if (round===3){
+                    $(".nextRoundButton").removeClass("alertLastImage");
+                    $("#Round_2").addClass("alertLastImage");
+                }
 
                 if (round===4) { //winner
-                    $("#food1, #food2, #Round_8, #Round_4, #Round_2").removeClass("alertLastImage")
+                    $("#food1, #food2, .nextRoundButton").removeClass("alertLastImage")
                     $("#food1, #food2").addClass("win");
 
                     $(this).addClass("winner");
-
                 }
-
             }
-
         });
 
         $("#food1").click(function (){ //클릭한 요소 selectedArr에 추가

@@ -6,17 +6,13 @@
 
 #buttons {text-align: center; position: relative;}
 
-#Round_8, #Round_4, #Round_2 {visibility: hidden;}
+.nextRoundButton {visibility: hidden;}
 
 #food1:hover, #food2:hover{transform: scale(1.05);}
-
-/*#food1.on{animation: ease 0.5s;}*/
-/*#food2.on{}*/
 
 .win{
     pointer-events: none;
     filter: grayscale(80%);
-
 }
 
 .winner {
@@ -33,7 +29,12 @@
 
 #food1:hover.alertLastImage, #food2:hover.alertLastImage{transform: scale(1);}
 
-#Round_8.alertLastImage, #Round_4.alertLastImage, #Round_2.alertLastImage {visibility: visible;}
+/*#Round_8.alertLastImage, #Round_4.alertLastImage, #Round_2.alertLastImage */
+.nextRoundButton.alertLastImage{visibility: visible;}
+
+
+
+
 
 #box_container{width: auto; margin: 0 auto; top: 104px; background-color: #FFF;}
 #box_container:after{content: ''; display: block; clear: both;}
