@@ -37,7 +37,6 @@ $(document).ready(function(){
         "우동",
     ]
 
-
     function shuffle(array) { //배열 섞기
         array.sort(() => Math.random() - 0.5);
     }
@@ -86,7 +85,7 @@ $(document).ready(function(){
 
                 switch (round){
                     case 1:
-                        $("#start").addClass("nextRoundButton");
+                        $("#start").addClass("hiddenButton");
                         $(".nextRoundButton").removeClass("alertLastImage");
                         $("#Round_8").addClass("alertLastImage");
                         break;
@@ -105,7 +104,7 @@ $(document).ready(function(){
                         $("#food1, #food2, .nextRoundButton").removeClass("alertLastImage")
                         $("#food1, #food2").addClass("win");
                         $(this).addClass("winner");
-                        $("#start").removeClass("nextRoundButton"); //승자 나오면 start버튼 다시 보이게 -> 다시하기 기능 추가 아직 X
+                        // $("#start").removeClass("nextRoundButton"); //승자 나오면 start버튼 다시 보이게 -> 다시하기 기능 추가 아직 X
 
                         break;
                 }
@@ -138,6 +137,7 @@ $(document).ready(function(){
     let result_2R = [];
 
     $("#start").click(function () { //시작 버튼 누르면 배열 섞음
+        $("#start").addClass("nextRoundButton");
         shuffle(foodArr); //배열 섞기
         result_16R = games(foodArr); //16강 결과
     });

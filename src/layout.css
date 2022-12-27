@@ -1,24 +1,30 @@
-
-
-
-
-
-
-
 /*#Round_2, #Round_8, #Round_4{ display: block;}*/
 
 #wrapper, #box_container, #box1, #box2, .name{border: solid 2px black;}
 
-#wrapper {width: 1250px; height: 760px; margin: 50px auto; padding: 20px 40px; background-color: #ffefa0;}
+#wrapper {width: 1250px; height: 860px; margin: 50px auto; padding: 20px 40px; background-color: #ffefa0;}
 
 #screen{width: 100%; height: 100%; background-color: black; opacity: 30%; position: absolute; top: 0; visibility: hidden;}
 
 #startBtn, #buttonsArea{display: flex; justify-content: center; align-items: center;}  /*버튼 가운데정랼*/
 
+button{margin-bottom: 15px; font-size: 35px; background-color: #FFF; border-radius: 15px; color: #ffd000; border: solid 3px #ffd000; position: relative;}
+button:hover{background-color: #fff8d7; color: #494747; border: solid 3px #484848; transition-duration: 0.5s;}
 
-button{font-size: 30px; background-color: #FFF; border-radius: 15px; color: #ffdf43; border: solid 3px #ffdf43; position: relative;}
-button:hover{font-size: 30px; background-color: #ffefa0; border-radius: 15px; color: #484848; border: solid 3px #484848; transition-duration: 0.5s;}
+#VS{
+    height: 630px;
+    width: 1250px;
+    font-size: 50px;
+    font-weight: bold;
+    color: #2d2d2d;
+    text-shadow: 0px 2px 10px rgb(253, 219, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
 
+.hiddenButton{visibility: hidden;}
 .nextRoundButton {display: none;}
 /*#Round_8, #Round_4, #Round_2{display: none;}*/
 
@@ -50,12 +56,12 @@ button:hover{font-size: 30px; background-color: #ffefa0; border-radius: 15px; co
 .nextRoundButton.alertLastImage{display: block;}
 
 
-#box_container{width: auto; margin: 0 auto; top: 104px; background-color: #FFF;}
+#box_container{width: auto; margin: 2% auto; background-color: #FFF;}
 #box_container:after{content: ''; display: block; clear: both;}
 
 #box1_area, #box2_area{
     width: 564px;
-    height: 630px;
+    height: 700px;
     position: relative;
     display: flex;
     align-items: center;
@@ -63,7 +69,7 @@ button:hover{font-size: 30px; background-color: #ffefa0; border-radius: 15px; co
     /*box1, name 세로 정렬*/
 }
 
-#box1, #box2{width: 500px; height: 430px; margin: 15% 30px 3% 30px;}
+#box1, #box2{width: 500px; height: 430px; margin: 15% 30px 5% 30px;}
 
 #box1, #box1_area{float: left;}
 #box2, #box2_area{float: right;}
@@ -71,4 +77,3 @@ button:hover{font-size: 30px; background-color: #ffefa0; border-radius: 15px; co
 .namebox1, .namebox2 {width: 500px; height: 50px; margin: 10px auto; border: solid 1px black;}
 
 img{width: 100%; height: 100%; object-fit: cover;}
-
