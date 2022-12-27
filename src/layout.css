@@ -5,9 +5,7 @@
 
 
 
-
-
-/*#Round_8, #Round_4, #Round_2{display: none;}*/
+/*#Round_2, #Round_8, #Round_4{ display: block;}*/
 
 #wrapper, #box_container, #box1, #box2, .name{border: solid 2px black;}
 
@@ -15,12 +13,14 @@
 
 #screen{width: 100%; height: 100%; background-color: black; opacity: 30%; position: absolute; top: 0; visibility: hidden;}
 
-#buttonsArea{display: flex; justify-content: center; align-items: center;}
-
-button{text-align: center; position: relative; margin: 10px auto;}
+#startBtn, #buttonsArea{display: flex; justify-content: center; align-items: center;}  /*버튼 가운데정랼*/
 
 
-.nextRoundButton {visibility: hidden;}
+button{font-size: 30px; background-color: #FFF; border-radius: 15px; color: #ffdf43; border: solid 3px #ffdf43; position: relative;}
+button:hover{font-size: 30px; background-color: #ffefa0; border-radius: 15px; color: #484848; border: solid 3px #484848;}
+
+.nextRoundButton {display: none;}
+/*#Round_8, #Round_4, #Round_2{display: none;}*/
 
 #food1:hover, #food2:hover{transform: scale(1.05);}
 
@@ -44,10 +44,7 @@ button{text-align: center; position: relative; margin: 10px auto;}
 #food1:hover.alertLastImage, #food2:hover.alertLastImage{transform: scale(1);}
 
 /*#Round_8.alertLastImage, #Round_4.alertLastImage, #Round_2.alertLastImage */
-.nextRoundButton.alertLastImage{visibility: visible;}
-
-
-
+.nextRoundButton.alertLastImage{display: block;}
 
 
 #box_container{width: auto; margin: 0 auto; top: 104px; background-color: #FFF;}
