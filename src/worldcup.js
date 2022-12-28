@@ -1,44 +1,28 @@
 $(document).ready(function(){
 
-    let foodArr = [ //이미지 데이터
-        "image/chicken.png",
-        "image/coldnoodle.png",
-        "image/hamburger.png",
-        "image/jjam.png",
-        "image/jog.png",
-        "image/kalguksu.png",
-        "image/makchang.png",
-        "image/pizza.png",
-        "image/ramen.png",
-        "image/sam.png",
-        "image/shabu.png",
-        "image/sundubu.png",
-        "image/sushi.png",
-        "image/toast.png",
-        "image/tteok.png",
-        "image/udong.png",
-    ]
-
-    let namesArr = [
-        "치킨",
-        "냉면",
-        "햄버거",
-        "짬뽕",
-        "족발",
-        "칼국수",
-        "막창",
-        "피자",
-        "라면",
-        "삼겹살",
-        "순두부",
-        "초밥",
-        "토스트",
-        "떡볶이",
-        "우동",
+    let data = [
+        {key: "치킨", value: "image/chicken.png"},
+        {key: "냉면", value: "image/coldnoodle.png"},
+        {key: "햄버거", value: "image/hamburger.png"},
+        {key: "짬뽕", value: "image/jjam.png"},
+        {key: "족발", value: "image/jog.png"},
+        {key: "칼국수", value: "image/kalguksu.png"},
+        {key: "막창", value: "image/makchang.png"},
+        {key: "피자", value: "image/pizza.png"},
+        {key: "라면", value: "image/ramen.png"},
+        {key: "삼겹살", value: "image/sam.png"},
+        {key: "샤브샤브", value: "image/shabu.png"},
+        {key: "순두부", value: "image/sundubu.png"},
+        {key: "초밥", value: "image/sushi.png"},
+        {key: "토스트", value: "image/toast.png"},
+        {key: "떡볶이", value: "image/tteok.png"},
+        {key: "우동", value: "image/udong.png"},
     ]
 
     function shuffle(array) { //배열 섞기
         array.sort(() => Math.random() - 0.5);
+        console.log(array)
+        return array;
     }
 
     let round = 0;
@@ -47,6 +31,7 @@ $(document).ready(function(){
         // 2) count = 0 초기화, 클릭 전 초기 값 [0][0] [0][1]로 세팅
         // 3) 클릭 이벤트 발생할 때마다 count ++, 다음 경기 보여주고,
         // 4) 클릭 발생한 요소는 selectedArr에 추가
+
         $("#food1, #food2, #screen, #food1:hover, #food2:hover, .nextRoundButton").removeClass("alertLastImage");
         round ++;
 
@@ -57,13 +42,21 @@ $(document).ready(function(){
         for (let i=0; i<array.length; i+=2) {
             games.push(array.slice(i, i+2))
         }
-        console.log(games);
+
+        console.log(games)
+
         console.log("round : " + round);
 
         let count = 0 //클릭할 때마다 count++해서 보이게 하고싶은데
                       // 클릭 전 default값을 어떻게 설정할지 몰라서 이렇게 일단 씀
-        $("#food1").attr("src", games[count][0]);
-        $("#food2").attr("src", games[count][1]);
+
+
+        $("#food1").attr("src", games[count][0].value);
+        $("#food2").attr("src", games[count][1].value);
+
+        $("#namebox1").text(games[count][0].key);
+        $("#namebox2").text(games[count][1].key);
+
 
         $("#food1, #food2").click(function() { //클릭 이벤트 발생시마다 다음 게임 노출
 
@@ -71,14 +64,21 @@ $(document).ready(function(){
             if(count < array.length/2){ //count가 0~7까지 들어와야됨
                 $("#food1, #food2, #screen, #food1:hover, #food2:hover, .nextRoundButton").removeClass("alertLastImage");
 
-                $("#food1").attr("src", games[count][0]).addClass("click");
-                $("#food2").attr("src", games[count][1]).addClass("click");
+                $("#food1").attr("src", games[count][0].value).addClass("click");
+                $("#food2").attr("src", games[count][1].value).addClass("click");
+
+                $("#namebox1").text(games[count][0].key);
+                $("#namebox2").text(games[count][1].key);
+
             }
 
 
             else { //배열 끝까지 click되면 배열 마지막 이미지 보이게
-                $("#food1").attr("src", games[games.length-1][0])
-                $("#food2").attr("src", games[games.length-1][1])
+                $("#food1").attr("src", games[games.length-1][0].value)
+                $("#food2").attr("src", games[games.length-1][1].value)
+
+                $("#namebox1").text(games[games.length-1][0].key);
+                $("#namebox2").text(games[games.length-1][1].key);
 
                 $("#food1, #food2, #screen, #food1:hover, #food2:hover /*, .nextRoundButton*/").addClass("alertLastImage");
 
@@ -105,7 +105,6 @@ $(document).ready(function(){
                         $("#food1, #food2").addClass("win");
                         $(this).addClass("winner");
                         // $("#start").removeClass("nextRoundButton"); //승자 나오면 start버튼 다시 보이게 -> 다시하기 기능 추가 아직 X
-
                         break;
                 }
             }
@@ -137,26 +136,27 @@ $(document).ready(function(){
     let result_2R = [];
 
     $("#start").click(function () { //시작 버튼 누르면 배열 섞음
-        $("#start").addClass("nextRoundButton");
-        shuffle(foodArr); //배열 섞기
-        result_16R = games(foodArr); //16강 결과
+        $(this).addClass("nextRoundButton");
+
+        let shuffledData = shuffle(data); //배열 섞기
+        result_16R = games(shuffledData); //16강 결과
     });
 
-    $("#Round_8").click(function () { //시작 버튼 누르면 배열 섞음
+    $("#Round_8").click(function () { //8강
         shuffle(result_16R); //배열 섞기
-        result_8R = games(result_16R); //16강 결과
+        result_8R = games(result_16R); //8강 결과
         console.log(result_8R);
     });
 
-    $("#Round_4").click(function () { //시작 버튼 누르면 배열 섞음
+    $("#Round_4").click(function () { //4강
         shuffle(result_8R); //배열 섞기
-        result_4R = games(result_8R); //16강 결과
+        result_4R = games(result_8R); //4강 결과
         console.log(result_4R);
     });
 
-    $("#Round_2").click(function () { //시작 버튼 누르면 배열 섞음
+    $("#Round_2").click(function () { //결승
         shuffle(result_4R); //배열 섞기
-        result_2R = games(result_4R); //16강 결과
+        result_2R = games(result_4R); //결승 결과
         console.log(result_2R);
     });
 });
