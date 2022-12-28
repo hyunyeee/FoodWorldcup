@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     function shuffle(array) { //배열 섞기
         array.sort(() => Math.random() - 0.5);
-        console.log(array)
+        console.log(array);
         return array;
     }
 
@@ -40,23 +40,20 @@ $(document).ready(function(){
 
         // 배열 요소 2개씩 슬라이스
         for (let i=0; i<array.length; i+=2) {
-            games.push(array.slice(i, i+2))
+            games.push(array.slice(i, i+2));
         }
 
-        console.log(games)
-
+        console.log(games);
         console.log("round : " + round);
 
         let count = 0 //클릭할 때마다 count++해서 보이게 하고싶은데
                       // 클릭 전 default값을 어떻게 설정할지 몰라서 이렇게 일단 씀
-
 
         $("#food1").attr("src", games[count][0].value);
         $("#food2").attr("src", games[count][1].value);
 
         $("#namebox1").text(games[count][0].key);
         $("#namebox2").text(games[count][1].key);
-
 
         $("#food1, #food2").click(function() { //클릭 이벤트 발생시마다 다음 게임 노출
 
@@ -69,9 +66,7 @@ $(document).ready(function(){
 
                 $("#namebox1").text(games[count][0].key);
                 $("#namebox2").text(games[count][1].key);
-
             }
-
 
             else { //배열 끝까지 click되면 배열 마지막 이미지 보이게
                 $("#food1").attr("src", games[games.length-1][0].value)
@@ -80,12 +75,11 @@ $(document).ready(function(){
                 $("#namebox1").text(games[games.length-1][0].key);
                 $("#namebox2").text(games[games.length-1][1].key);
 
-                $("#food1, #food2, #screen, #food1:hover, #food2:hover /*, .nextRoundButton*/").addClass("alertLastImage");
-
+                $("#food1, #food2, #screen, #food1:hover, #food2:hover").addClass("alertLastImage");
 
                 switch (round){
                     case 1:
-                        $("#start").addClass("hiddenButton");
+                        $("#start").addClass("hidden");
                         $(".nextRoundButton").removeClass("alertLastImage");
                         $("#Round_8").addClass("alertLastImage");
                         break;
@@ -126,7 +120,6 @@ $(document).ready(function(){
                 console.log(count);
             }
         });
-
         return selectedArr; //선택된 배열 return
     }
 
@@ -137,7 +130,7 @@ $(document).ready(function(){
 
     $("#start").click(function () { //시작 버튼 누르면 배열 섞음
         $(this).addClass("nextRoundButton");
-
+        $("#screen").addClass("hidden");
         let shuffledData = shuffle(data); //배열 섞기
         result_16R = games(shuffledData); //16강 결과
     });
